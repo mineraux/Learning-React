@@ -1,37 +1,32 @@
-import React from 'react'
+import React from 'react';
 
-const Cockpit = (props) => {
+import classes from './Cockpit.css';
+import Aux from '../../hoc/Aux';
 
-  let classes = []
+const cockpit = ( props ) => {
+    const assignedClasses = [];
+    let btnClass = classes.Button;
+    if ( props.showPersons ) {
+        btnClass = [classes.Button, classes.Red].join( ' ' );
+    }
 
-  if (props.persons.length <= 2) {
-    classes.push('red')
-  }
+    if ( props.persons.length <= 2 ) {
+        assignedClasses.push( classes.red ); // classes = ['red']
+    }
+    if ( props.persons.length <= 1 ) {
+        assignedClasses.push( classes.bold ); // classes = ['red', 'bold']
+    }
 
-  if (props.persons.length <= 1) {
-    classes.push('bold')
-  }
+    return (
+        <Aux>
+            <h1>{props.appTitle}</h1>
+            <p className={assignedClasses.join( ' ' )}>This is really working!</p>
+            <button
+                className={btnClass}
+                onClick={props.clicked}>Toggle Persons</button>
+            <button onClick={props.login}>Log in</button>
+        </Aux>
+    );
+};
 
-  const style = {
-    backgroundColor: 'green',
-    color: 'white',
-    font: 'inherit',
-    border: '1px solid blue',
-    padding: '8px',
-    cursor: 'pointer',
-  }
-
-  if (props.showPersons) {
-    style.backgroundColor = 'red'
-  }
-  
-  return (
-    <div>
-      <h1>Im a React App !!</h1> 
-      <p className={classes.join(' ')}>This is working !</p>
-      <button onClick={props.clicked} style={style}>Switch Name</button>  
-    </div>
-  )
-}
-
-export default Cockpit
+export default cockpit;
