@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
-import Aux from '../../hoc/Aux'
+
+import Aux from '../Aux/Aux'
 import classes from './Layout.css'
-import Toolbar from '../Navigation/Toolbar/Toolbar'
-import SideDrawer from '../Navigation/SideDrawer/SideDrawer'
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
+import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer'
 
 class Layout extends Component {
   
@@ -15,7 +16,7 @@ class Layout extends Component {
   }
 
   /**
-   * There, we use prevState because we need state in setState.
+   * Here, we use prevState because we need state in setState.
    * Use this.state.showSideDrawer instead of prevState.showSideDrawer
    * may come to unexpected output because of asynchronous management.
    */
